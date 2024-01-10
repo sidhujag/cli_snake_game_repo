@@ -1,0 +1,1 @@
+Logic Analysis: List files with classes/methods/functions and their dependencies.

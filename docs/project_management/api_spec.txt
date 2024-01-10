@@ -1,0 +1,1 @@
+Full API Spec: Describe all APIs using OpenAPI 3.0 spec for front and back-end communication.

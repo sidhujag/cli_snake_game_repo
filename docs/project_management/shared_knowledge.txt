@@ -1,0 +1,1 @@
+Shared Knowledge: Detail shared utility functions or configuration variables.
