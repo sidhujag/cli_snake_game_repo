@@ -1,1 +1,7 @@
 Product Goals: Outline up to three key goals for the product.
+
+1. **Engagement**: Create an engaging and addictive CLI-based snake game that keeps players coming back. The game should offer a simple yet challenging experience, encouraging players to beat their high scores.
+
+2. **Accessibility**: Ensure the game is easily accessible and can be played on various platforms without the need for complex installations. The game should run smoothly on all major operating systems with minimal dependencies.
+
+3. **Extensibility**: Design the game architecture in a way that allows for easy updates and the addition of new features, such as new levels, challenges, and power-ups, to keep the gameplay fresh and engaging over time.
