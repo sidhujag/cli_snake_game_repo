@@ -266,3 +266,66 @@ while True:
         w.addch(int(tail[0]), int(tail[1]), ' ')
     
     w.addch(int(snake[0][0]), int(snake[0][1]), curses.ACS_CKBOARD)
+import random
+import os
+import time
+from keyboard_controller import capture_input
+
+# Game settings
+BOARD_WIDTH = 20
+BOARD_HEIGHT = 20
+SNAKE_CHAR = '#'
+FOOD_CHAR = '*'
+EMPTY_SPACE_CHAR = ' '
+
+# Initial snake position
+snake = [(BOARD_WIDTH // 2, BOARD_HEIGHT // 2)]
+# Initial food position
+food = (random.randint(0, BOARD_WIDTH - 1), random.randint(0, BOARD_HEIGHT - 1))
+# Initial direction
+direction = 'UP'
+
+def print_board():
+    os.system('cls' if os.name == 'nt' else 'clear')
+    for y in range(BOARD_HEIGHT):
+        for x in range(BOARD_WIDTH):
+            if (x, y) in snake:
+                print(SNAKE_CHAR, end='')
+            elif (x, y) == food:
+                print(FOOD_CHAR, end='')
+            else:
+                print(EMPTY_SPACE_CHAR, end='')
+        print()
+
+def move_snake():
+    global food, snake
+    head_x, head_y = snake[0]
+    if direction == 'UP':
+        new_head = (head_x, (head_y - 1) % BOARD_HEIGHT)
+    elif direction == 'DOWN':
+        new_head = (head_x, (head_y + 1) % BOARD_HEIGHT)
+    elif direction == 'LEFT':
+        new_head = ((head_x - 1) % BOARD_WIDTH, head_y)
+    elif direction == 'RIGHT':
+        new_head = ((head_x + 1) % BOARD_WIDTH, head_y)
+    
+    if new_head in snake:
+        print("Game Over!")
+        exit()
+    snake.insert(0, new_head)
+    
+    if new_head == food:
+        food = (random.randint(0, BOARD_WIDTH - 1), random.randint(0, BOARD_HEIGHT - 1))
+    else:
+        snake.pop()
+
+def game_loop():
+    global direction
+    while True:
+        direction = capture_input()
+        move_snake()
+        print_board()
+        time.sleep(0.2)
+
+if __name__ == '__main__':
+    game_loop()
